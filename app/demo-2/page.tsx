@@ -1,5 +1,4 @@
 import DemoContextProvider from "../src/contexts/Users/provider";
-import DemoServerSideComponent from "../src/pages/demo-context/Demo";
 import HeaderAmount from "../src/pages/demo-context/HeaderAmount";
 
 export default async function DemoServerSide() {
@@ -8,12 +7,11 @@ export default async function DemoServerSide() {
     );
     const blogData = await blogs.json();
 
-    console.log(`Author:minh.lam , DemoServerSide , demo 1:`);
+    console.log(`Author:minh.lam , DemoServerSide ,  demo 2:`);
 
     return (
         <DemoContextProvider data={blogData}>
             <HeaderAmount />
-            <DemoServerSideComponent />
         </DemoContextProvider>
     );
 }

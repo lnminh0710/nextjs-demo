@@ -29,6 +29,8 @@ export default async function RootLayout({
     );
     const data = await response.json();
 
+    console.log(`Author:minh.lam , layout get user info:`, data);
+
     return (
         <html lang="en">
             <body
