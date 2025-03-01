@@ -4,10 +4,12 @@ import clsx from "clsx";
 import { useCallback, useContext, useState } from "react";
 import { DemoContext } from "../../contexts/Users/context";
 import { UserItem } from "../../models/UserModel";
+import { AuthenticationContext } from "../../contexts/Authentication/context";
 
 const DemoServerSideComponent = () => {
     const [itemSelected, setItemSelected] = useState<string[]>([]);
     const authen = useContext(DemoContext);
+    const { setCounter } = useContext(AuthenticationContext);
 
     const onClickItem = useCallback(
         (user: UserItem) => {
@@ -23,8 +25,9 @@ const DemoServerSideComponent = () => {
                 });
                 authen.updateTotalAmount?.(parseInt(user.money));
             }
+            setCounter?.((prev) => (prev += 1));
         },
-        [authen, itemSelected]
+        [authen, itemSelected, setCounter]
     );
 
     return (

@@ -5,7 +5,7 @@ import { AuthenticationContext } from "../contexts/Authentication/context";
 import Link from "next/link";
 
 export const HeaderComponent = () => {
-    const { data } = useContext(AuthenticationContext);
+    const { data, counter } = useContext(AuthenticationContext);
 
     console.log(`Author:minh.lam , HeaderComponent , data:`, data);
 
@@ -15,6 +15,7 @@ export const HeaderComponent = () => {
                 <Link href={"demo-1"}>Demo 1</Link>
                 <Link href={"demo-2"}>Demo 2</Link>
             </div>
+            <div className="text-amber-400 ml-4">Counter: {counter}</div>
             <div>
                 {data?.firstName} {data?.lastName}
             </div>
