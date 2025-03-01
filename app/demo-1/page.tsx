@@ -1,4 +1,4 @@
-import AuthenticationProvider from "../src/contexts/Authentication/provider";
+import DemoContextProvider from "../src/contexts/Users/provider";
 import DemoServerSideComponent from "../src/pages/demo-context/Demo";
 import HeaderAmount from "../src/pages/demo-context/HeaderAmount";
 
@@ -11,9 +11,9 @@ export default async function DemoServerSide() {
     console.log(`Author:minh.lam , DemoServerSide , blogData:`, blogData);
 
     return (
-        <AuthenticationProvider data={blogData}>
+        <DemoContextProvider data={blogData}>
             <HeaderAmount />
             <DemoServerSideComponent />
-        </AuthenticationProvider>
+        </DemoContextProvider>
     );
 }

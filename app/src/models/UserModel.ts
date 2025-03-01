@@ -4,5 +4,7 @@ export interface UserItem {
     account: string;
     money: string;
     address: string;
+    firstName?: string;
+    lastName?: string;
     id: string;
 }

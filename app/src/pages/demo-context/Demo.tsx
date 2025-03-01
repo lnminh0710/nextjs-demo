@@ -1,15 +1,13 @@
 "use client";
 
-import { useCallback, useContext, useState } from "react";
-import { AuthenticationContext } from "../../contexts/Authentication/context";
-import { UserItem } from "../../models/UserModel";
 import clsx from "clsx";
+import { useCallback, useContext, useState } from "react";
+import { DemoContext } from "../../contexts/Users/context";
+import { UserItem } from "../../models/UserModel";
 
 const DemoServerSideComponent = () => {
     const [itemSelected, setItemSelected] = useState<string[]>([]);
-    const authen = useContext(AuthenticationContext);
-
-    console.log(`Author:minh.lam , DemoServerSideComponent , authen:`, authen);
+    const authen = useContext(DemoContext);
 
     const onClickItem = useCallback(
         (user: UserItem) => {
@@ -18,12 +16,12 @@ const DemoServerSideComponent = () => {
                     return prevState.filter((_item) => _item !== user.id);
                 });
 
-                authen.updateTotalAmount?.(-parseFloat(user.money));
+                authen.updateTotalAmount?.(-parseInt(user.money));
             } else {
                 setItemSelected((prevState) => {
                     return [...prevState, user.id];
                 });
-                authen.updateTotalAmount?.(parseFloat(user.money));
+                authen.updateTotalAmount?.(parseInt(user.money));
             }
         },
         [authen, itemSelected]
@@ -50,7 +48,7 @@ const DemoServerSideComponent = () => {
                     <div>Account : {user.account}</div>
                     <div>Address : {user.address}</div>
                     <div>
-                        Amount of money: <b>{user.money}</b> USD
+                        Amount of money: <b>{parseInt(user.money)}</b> USD
                     </div>
                 </div>
             ))}
