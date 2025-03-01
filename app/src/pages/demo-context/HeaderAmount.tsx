@@ -1,22 +1,21 @@
 "use client";
 
 import { useContext } from "react";
+import { DemoContext } from "../../contexts/Users/context";
 import { AuthenticationContext } from "../../contexts/Authentication/context";
 
 const HeaderAmount = () => {
-    const { data, setCounter } = useContext(AuthenticationContext);
+    const { totalMoney } = useContext(DemoContext);
+    const { data } = useContext(AuthenticationContext);
 
     return (
-        <div className="h-10 flex items-center gap-4 mb-4 px-4">
+        <div className="h-10 flex items-center justify-between mb-4 px-4">
             <div>
                 Current user: {data?.firstName} {data?.lastName}
             </div>
-
-            <div
-                className="cursor-pointer border px-4 rounded select-none"
-                onClick={() => setCounter?.((prev) => (prev += 1))}
-            >
-                +
+            <div className="flex items-center">
+                Total money :{" "}
+                <div className="ml-1 text-red-600 font-bold"> {totalMoney}</div>
             </div>
         </div>
     );

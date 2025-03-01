@@ -1,5 +1,5 @@
 import DemoContextProvider from "../src/contexts/Users/provider";
-import HeaderAmount from "../src/pages/demo-context/HeaderAmount";
+import HeaderCounter from "../src/pages/demo-context/HeaderCounter";
 
 export default async function DemoServerSide() {
     const blogs = await fetch(
@@ -11,7 +11,7 @@ export default async function DemoServerSide() {
 
     return (
         <DemoContextProvider data={blogData}>
-            <HeaderAmount />
+            <HeaderCounter />
         </DemoContextProvider>
     );
 }
